@@ -28,12 +28,12 @@ def do_pack():
                                                 dt.hour,
                                                 dt.minute,
                                                 dt.second)
-    result = local("{} ./versions/{} web_static"
-                   .format(command, arch), capture=True)
-    if not result.succeeded:
+    try:
+        local("{} ./versions/{} web_static".format(command, arch), capture=True)
+        print(result.stdout)
+        return new_archive
+    except Exception:
         return None
-    print(result.stdout)
-    return new_archive
 
 
 def do_deploy(archive_path):
@@ -77,8 +77,7 @@ def do_deploy(archive_path):
 
 def deploy():
     """Deploy archive to the servers."""
-    new_archive = do_pack()
-    if new_archive is None:
+    archive = do_pack()
+    if archive is None:
         return False
-
-    return do_deploy(new_archive)
+    return do_deploy(archive)
