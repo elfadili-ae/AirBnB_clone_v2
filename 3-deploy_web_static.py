@@ -29,7 +29,8 @@ def do_pack():
                                                 dt.minute,
                                                 dt.second)
     try:
-        local("{} ./versions/{} web_static".format(command, arch), capture=True)
+        local("{} ./versions/{} web_static".
+              format(command, arch), capture=True)
         print(result.stdout)
         return new_archive
     except Exception:
