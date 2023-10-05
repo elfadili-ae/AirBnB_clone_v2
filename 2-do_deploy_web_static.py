@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """Compress web_static files."""
 
-from fabric.api import *
-from datetime import datetime
+from fabric.api import run
+from fabric.api import put
+from fabric.api import env
 import os
 
 env.hosts = [
@@ -14,7 +15,7 @@ env.user = "ubuntu"
 
 def do_deploy(archive_path):
     """Deply the pack to the server."""
-    if not os.path.exists(archive_path):
+    if not os.path.isfile(archive_path):
         return False
 
     result = put(archive_path, "/tmp/")
@@ -34,10 +35,8 @@ def do_deploy(archive_path):
     if not result.succeeded:
         return False
     pth = "/data/web_static/releases"
-    result = run("mv -f {}/{}/web_static/* {}/{}".format(pth,
-                                                         arch_name,
-                                                         pth,
-                                                         arch_name))
+    result = run("mv {}/{}/web_static/* {}/{}".
+                 format(pth, arch_name, pth, arch_name))
     if not result.succeeded:
         return False
     result = run("rm -rf {}/{}/web_static".format(pth, arch_name))
