@@ -22,7 +22,8 @@ def cities():
     """
     states = storage.all("State")
     citites = storage.all("City")
-    return render_template("8-cities_by_states.html", states=states, cities=citites)
+    return render_template("8-cities_by_states.html",
+                           states=states, cities=citites)
 
 
 if __name__ == "__main__":
