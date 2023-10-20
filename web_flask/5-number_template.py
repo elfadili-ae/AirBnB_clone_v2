@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Hello HBNB from Flask."""
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -16,9 +16,10 @@ def hbnb_page():
     """Hbnb route."""
     return "HBNB"
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def c_page(text):
-    """c is fun"""
+    """C route."""
     text_fix = f'{text}'.replace('_', ' ')
     return f'C {text}'
 
@@ -26,7 +27,7 @@ def c_page(text):
 @app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_page(text="is cool"):
-    """python is magic."""
+    """Python route"""
     text_fix = f'{text}'.replace('_', ' ')
     return f'Python {text_fix}'
 
