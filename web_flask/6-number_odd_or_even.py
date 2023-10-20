@@ -51,7 +51,7 @@ def odven_page(n):
     Args:
         n (int): the number to check
     """
-    return render_template('templates/6-number_odd_or_even.html', num=n)
+    return render_template('6-number_odd_or_even.html', num=n)
 
 
 if __name__ == "__main__":
