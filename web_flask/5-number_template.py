@@ -31,22 +31,16 @@ def python_page(text="is cool"):
     return f'Python {text_fix}'
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number_page(n):
-    """random freaking number"""
-    try:
-        num = int(n)
-        return f'{num} is a number'
-    except Exception:
-        abort(404)
+    """Number route"""
+    return f'{n} is a number'
 
-@app.route('/number_template/<n>', strict_slashes=False)
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def template_page(n):
-    try:
-        num = int(n)
-        return render_template("5-number.html", num=n)
-    except Exception:
-        abort(404)
+    """Number template route"""
+    return render_template("5-number.html", num=n)
 
 
 if __name__ == "__main__":
