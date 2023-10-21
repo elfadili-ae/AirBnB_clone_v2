@@ -21,7 +21,7 @@ def hbnb_page():
 def c_page(text):
     """C is fun"""
     text_fix = f'{text}'.replace('_', ' ')
-    return f'C {text}'
+    return f'C {text_fix}'
 
 
 if __name__ == "__main__":
