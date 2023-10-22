@@ -15,7 +15,7 @@ def teardown_context(exception):
 
 @app.route("/hbnb", strict_slashes=False)
 def hbbnb():
-    """ places list
+    """List places from db. And populate filters
 
     Returns:
         template: hbnb template
